@@ -2,7 +2,7 @@
 1. Introduction
 2. Types of Healthcare Provider Fraud
 3. Business Problem
-4. ML Formulation
+4. ML Formulationd
 5. Business Constraints
 6. Dataset Column Analysis
 7. Performance metric
