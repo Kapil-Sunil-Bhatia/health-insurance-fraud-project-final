@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Provider Fraud Detection</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #ecf0f1;
+            --form-background: #ffffff;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            background-color: var(--form-background);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        form:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        input[type="file"] {
+            border: none;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loader-container.show {
+            opacity: 1;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Upload CSV Files for Fraud Detection</h1>
+    <form id="fraudDetectionForm" action="/predictfraud" method="POST" enctype="multipart/form-data">
+        <label for="provider_id">Provider ID:</label>
+        <input type="text" id="provider_id" name="provider_id" required>
+
+        <label for="provider">Provider File:</label>
+        <input type="file" id="provider" name="Provider" required accept=".csv">
+
+        <label for="inpatient">Inpatient File:</label>
+        <input type="file" id="inpatient" name="Inpatient" required accept=".csv">
+
+        <label for="outpatient">Outpatient File:</label>
+        <input type="file" id="outpatient" name="Outpatient" required accept=".csv">
+
+        <label for="beneficiary">Beneficiary File:</label>
+        <input type="file" id="beneficiary" name="Beneficiary" required accept=".csv">
+
+        <button type="submit">Submit for Fraud Detection</button>
+    </form>
+    <div id="loaderContainer" class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        document.getElementById('fraudDetectionForm').addEventListener('submit', function (e) {
+            const loaderContainer = document.getElementById('loaderContainer');
+            loaderContainer.style.display = 'flex';
+            setTimeout(() => {
+                loaderContainer.classList.add('show');
+            }, 10);
+        });
+    </script>
+</body>
+
+</html>
