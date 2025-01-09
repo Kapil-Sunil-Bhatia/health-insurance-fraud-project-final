@@ -267,3 +267,27 @@ Result
  8976                NaN                NaN  
  
  [4951 rows x 30 columns]}
+
+
+
+
+
+1. Excessive Claims:  
+   Provider ID: PRV54064  
+   - Number of claims significantly exceeds the average for similar providers.
+
+2. Short Span Claims:  
+   Provider ID: PRV52587
+   - Multiple claims processed for short durations, often within a day.
+
+3. Duplicate Claims:  
+   Provider ID: PRV54786
+   - Claims for the same beneficiary and diagnosis repeated within a short time frame.
+
+4. Unusual Claim Amounts:  
+   Provider ID: PRV57103 
+   - Claims with significantly high reimbursement amounts compared to the median for similar diagnoses.
+
+5. Suspicious Physician Involvement:
+   Provider ID: PRV55039
+   - Claims with attending, operating, or other physicians repeatedly linked across multiple fraud-positive claims.
