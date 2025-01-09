@@ -269,9 +269,6 @@ Result
  [4951 rows x 30 columns]}
 
 
-
-
-
 1. Excessive Claims:  
    Provider ID: PRV54064  
    - Number of claims significantly exceeds the average for similar providers.
